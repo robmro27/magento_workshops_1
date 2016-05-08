@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    
+    <modules>
+        <Polcode_Helloworld>
+            <version>0.1.0</version>
+        </Polcode_Helloworld>
+    </modules>
+    
+    <global>
+        
+        <events>
+            <sales_order_place_after>
+                <observers>
+                    <polcode_product_observer>
+                        <type>singleton</type>
+                        <class>helloworld/observer</class>
+                        <method>checkProduct</method>
+                    </polcode_product_observer>
+                </observers>
+            </sales_order_place_after>
+        </events>
+        
+        <models>
+            <helloworld>
+                <class>Polcode_Helloworld_Model</class>
+                <resourceModel>helloworld_resource</resourceModel>
+            </helloworld>
+            <helloworld_resource>
+                <class>Polcode_Helloworld_Model_Resource</class>
+                <entities>
+                    <product>
+                        <table>polcode_product</table>
+                    </product>
+                </entities>
+            </helloworld_resource>
+        </models>
+        <helpers>
+            <helloworld>
+                <class>Polcode_Helloworld_Helper</class>
+            </helloworld>
+        </helpers>
+        <blocks>
+            <helloworld>
+                <class>Polcode_Helloworld_Block</class>
+            </helloworld>
+        </blocks>
+        
+        <resources>
+            <helloworld_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </helloworld_read>
+            <helloworld_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </helloworld_write>
+            <helloworld_setup>
+                <setup>
+                    <module>Polcode_Helloworld</module>
+                </setup>
+            </helloworld_setup>
+        </resources>
+        
+    </global>
+    
+    <frontend>
+        <routers>
+            <helloworld>
+                <use>standard</use>
+                <args>
+                    <module>Polcode_Helloworld</module>
+                    <frontName>hello</frontName>
+                </args>
+            </helloworld>
+        </routers>
+        <layout>
+            <updates>
+                <helloworld>
+                    <file>helloworld.xml</file>
+                </helloworld>
+            </updates>
+        </layout>
+    </frontend>
+    
+    <default>
+        <polcode_section>
+            <product>
+                <enabled>1</enabled>
+                <sku>Nothing there yet !</sku>
+            </product>
+        </polcode_section>
+    </default>
+    
+</config>
