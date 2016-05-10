@@ -2,10 +2,14 @@
 
 $installer = Mage::getResourceModel('catalog/setup', 'catalog_setup');
 $installer->startSetup();
+
+$installer->removeAttribute('catalog_product', 'custom_pdf');
+$installer->removeAttribute('catalog_category', 'custom_pdf');
+
 $installer->addAttribute('catalog_product', 'custom_pdf', array(
     'group'                    => 'General',
     'label'                    => 'Pdf file',
-    'input'                    => 'image',
+    'input'                    => 'file',
     'type'                     => 'varchar',
     'backend'                  => 'helloworld/product_attribute_backend_file',
     'global'                   => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_STORE,
@@ -15,9 +19,9 @@ $installer->addAttribute('catalog_product', 'custom_pdf', array(
     'order'                    => 20
 ));
 $installer->addAttribute('catalog_category', 'custom_pdf', array(
-    'group'                    => 'General',
+    'group'                    => 'General Information',
     'label'                    => 'Pdf file',
-    'input'                    => 'image',
+    'input'                    => 'file',
     'type'                     => 'varchar',
     'backend'                  => 'helloworld/category_attribute_backend_file',
     'global'                   => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_STORE,

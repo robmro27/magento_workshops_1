@@ -1,6 +1,39 @@
-<?php if ( count( $this->getProducts() ) > 0 ) { ?>
-    <p>Observed products: </p>
-    <?php foreach ( $this->getProducts() as $product ): ?>
-        <p><?php echo $product->getSku() ?></p>
-    <?php endforeach; ?>
-<?php } ?>
+<?php $collection = $this->getCollection(); ?>
+
+    <p><?php echo $this->__('Buyed Products') ?></p>
+
+
+<?php if($collection->getSize()): ?>
+<table class="data-table" id="my-custom-table">
+    <thead>
+        <tr>
+            <th><?php echo $this->__('Sku') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php $_odd = ''; ?>
+        <?php foreach ($collection as $_obj): ?>
+        <tr>
+            <td><?php echo $_obj->getSku() ?></td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
+<?php if(!$this->isFirstPage()): ?>      
+    <a href="<?php echo $this->getPrevPageUrl() ?>"><?php echo $this->__('Prev') ?></a>    
+<?php endif; ?>
+
+
+<?php if(!$this->isLastPage()): ?>  
+    <a href="<?php echo $this->getNextPageUrl() ?>"><?php echo $this->__('Next') ?></a>
+<?php endif; ?>
+
+
+
+
+<?php else: ?>
+
+    <p><?php echo $this->__('The collection is empty.'); ?></p>
+    
+<?php endif ?>

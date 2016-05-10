@@ -45,6 +45,9 @@
         <a href="<?php echo $this->getRssLink() ?>" class="link-rss"><?php echo $this->__('Subscribe to RSS Feed') ?></a>
     <?php endif; ?>
     <h1><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
+    <p>
+        <a href="<?php echo Mage::getBaseUrl('media').'catalog/category/' . $_category->getCustomPdf()?>" target="_blank">Download file</a>
+    </p>
 </div>
 
 <?php echo $this->getMessagesBlock()->toHtml() ?>

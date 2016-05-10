@@ -16,7 +16,7 @@ class Polcode_Helloworld_Model_Observer {
         // check
         foreach ($observer->getEvent()->getOrder()->getAllItems() as $item)
         {
-            if ( $sku == $item->getProduct()['sku'] ) {
+            if ( strtolower($sku) == strtolower($item->getProduct()['sku']) ) {
                 
                 $product = Mage::getModel('helloworld/product');
                 $product->setSku($item->getProduct()['sku']);

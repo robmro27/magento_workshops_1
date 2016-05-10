@@ -48,14 +48,25 @@
 
             <div class="product-img-box">
                 <div class="product-name">
-                    <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                    <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+                        <?php echo $_product->getSku() ?>
+                    </h1>
+                    <p>
+                        <a href="<?php echo Mage::getBaseUrl('media').'catalog/product/' . $_product->getCustomPdf()?>" target="_blank">Download file</a>
+                    </p>
                 </div>
                 <?php echo $this->getChildHtml('media') ?>
             </div>
 
             <div class="product-shop">
                 <div class="product-name">
-                    <span class="h1"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></span>
+                    <span class="h1">
+                        <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+                        <?php echo $_product->getSku() ?>
+                    </span>
+                    <p>
+                        <a href="<?php echo Mage::getBaseUrl('media').'catalog/product/' . $_product->getCustomPdf()?>" target="_blank">Download file</a>
+                    </p>
                 </div>
 
                 <div class="price-info">
